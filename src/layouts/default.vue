@@ -5,7 +5,7 @@ import Player from 'components/molecules/player.vue'
 </script>
 
 <template>
-  <main class="no-select flex flex-row">
+  <main class="no-select overflow-hidden flex flex-row">
     <NuxtLoadingIndicator color="#f55" :height="3" />
     <app-sidebar />
     <div class="w-full h-full ml-24">

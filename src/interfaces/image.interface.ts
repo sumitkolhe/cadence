@@ -1,1 +1,1 @@
-export type DownloadLink = { quality: string; link: string }[] | boolean
+export type DownloadLink = { quality: string; link: string }[]
