@@ -8,8 +8,8 @@ const { isDarkTheme, changeTheme } = useTheme()
       v-if="!isDarkTheme"
       name="line-md:sun-rising-loop"
       size="32"
-      class="text-gray-900 dark:text-gray-500"
+      class="text-gray-600 dark:text-gray-500"
     />
-    <Icon v-else name="line-md:moon" size="32" class="text-gray-900 dark:text-gray-600" />
+    <Icon v-else name="line-md:moon" size="32" class="text-gray-500 dark:text-gray-400" />
   </button>
 </template>

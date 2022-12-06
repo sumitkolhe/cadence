@@ -4,23 +4,30 @@ import { usePlayerStore } from 'store/player.store'
 
 const { currentPlaying } = storeToRefs(usePlayerStore())
 
-const src = ref('')
-
-watch(currentPlaying, (old) => {
-  const l = old.downloadUrl?.filter((i) => i.quality === '320kbps')
-  src.value = l[0].link
-})
+const audioSource = computed(
+  () => currentPlaying.value?.downloadUrl?.find((link) => link.quality === '320kbps')?.link || ''
+)
 </script>
 
 <template>
   <nav
-    class="h-fit fixed z-50 text-white bottom-0 border-gray-200 bg-white dark:bg-gray-800 rounded-t-xl w-full"
+    class="fixed flex items-center justify-between border-t dark:border-gray-700 space-x-6 px-8 py-4 z-50 text-white bottom-0 bg-gray-50 dark:bg-gray-800 rounded-t-xl w-full"
   >
-    <audio v-if="src" :key="src" controls class="w-full">
-      <source :src="src" />
-    </audio>
-
-    <!-- <audio v-if="src" ref="audio" :key="src" />
-    <button class="bg-black" @click="playing = !playing">Play / Pause</button> -->
+    <div class="flex space-x-4">
+      <img :src="currentPlaying.image[0].link" class="rounded-md dark:border-gray-700 border" />
+      <div class="flex flex-col">
+        <p class="text-gray-900 dark:text-gray-200 font-medium text-base">
+          {{ currentPlaying.name }}
+        </p>
+        <p class="text-gray-600 dark:text-gray-400 text-sm font-light">
+          {{ currentPlaying.primaryArtists }}
+        </p>
+      </div>
+    </div>
+    <div class="w-fit">
+      <audio v-if="audioSource" :key="audioSource" controls autoplay class="w-full">
+        <source :src="audioSource" />
+      </audio>
+    </div>
   </nav>
 </template>

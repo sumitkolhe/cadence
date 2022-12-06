@@ -1,36 +1,66 @@
 <script lang="ts" setup>
 import { useSearchStore } from 'store/search.store'
 import ThemeSwitch from 'components/molecules/theme-switch.vue'
+import Logo from 'components/atoms/logo.vue'
 
 const { searchSongs } = useSearchStore()
 
 const search = ref('')
+const expand = ref(false)
+const target = ref(null)
 const query = refDebounced(search, 500)
+
+onClickOutside(target, () => (expand.value = false))
 
 watch(query, () => (query.value === '' ? null : searchSongs(query.value)))
 </script>
 
 <template>
-  <header
-    class="w-full relative fixed items-center justify-evenly flex-row dark:bg-gray-900 bg-gray-100 flex py-6 px-4"
-  >
-    <div class="flex w-[50%] dark:border-gray-700 border-[2px] rounded-full">
-      <label for="search-field" class="sr-only">Search everything</label>
-      <div class="relative w-full text-gray-300 focus-within:text-gray-600">
-        <div class="pointer-events-none absolute inset-y-0 left-4 flex items-center">
-          <Icon name="ph:magnifying-glass-duotone" class="focus:text-red-500" />
+  <header class="bg-gray-100 dark:bg-gray-900 fixed z-30 w-full">
+    <div class="p-6">
+      <div class="flex items-center justify-between space-x-10">
+        <Logo />
+
+        <div
+          ref="target"
+          class="hidden relative w-[50%] lg:block ml-16 dark:border-gray-700 border-[2px] rounded-full"
+        >
+          <label for="search-field" class="sr-only">Search everything</label>
+          <div
+            class="relative w-full text-gray-300 focus-within:text-gray-600 dark:focus-within:text-gray-300"
+          >
+            <div class="pointer-events-none absolute inset-y-0 left-4 flex items-center">
+              <Icon name="ph:magnifying-glass-duotone" />
+            </div>
+            <input
+              id="search-field"
+              v-model="search"
+              name="search-field"
+              class="h-full w-full rounded-full border-transparent dark:bg-gray-800 py-2 pl-16 pr-3 text-base dark:text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-500 focus:border-transparent focus:placeholder-gray-400"
+              placeholder="Search"
+              type="search"
+              @click="expand = true"
+            />
+          </div>
+
+          <transition
+            enter-active-class="transition duration-200 ease-out"
+            enter-from-class="translate-y-1 opacity-0"
+            enter-to-class="translate-y-0 opacity-100"
+            leave-active-class="transition duration-300 ease-in"
+            leave-from-class="translate-y-0 opacity-100"
+            leave-to-class="translate-y-1 opacity-0"
+          >
+            <div
+              v-show="expand"
+              class="absolute bg-gray-100 w-full rounded-xl top-14 shadow-2xl p-6 transition"
+            >
+              okkk
+            </div>
+          </transition>
         </div>
-        <input
-          id="search-field"
-          v-model="search"
-          name="search-field"
-          class="h-full w-full rounded-full border-transparent dark:bg-gray-800 py-2 pl-16 pr-3 text-base dark:text-gray-200 placeholder-gray-500 focus:outline-none focus:ring-0 focus:border-transparent focus:placeholder-gray-400"
-          placeholder="Search"
-          type="search"
-        />
+        <theme-switch />
       </div>
     </div>
-
-    <div class="right-0"><theme-switch /></div>
   </header>
 </template>
