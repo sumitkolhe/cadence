@@ -3,7 +3,7 @@ import { FetchError } from 'ohmyfetch'
 import { logger } from 'utils/logger'
 import type { ModulesResponse } from 'interfaces/modules.interface'
 
-export const useModulesStore = defineStore('modules', {
+export const useModulesStore = defineStore('modules-store', {
   state: () => ({
     modules: {} as ModulesResponse,
   }),

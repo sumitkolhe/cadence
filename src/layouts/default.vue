@@ -9,7 +9,7 @@ import Player from 'components/molecules/player.vue'
     <NuxtLoadingIndicator color="#f55" :height="3" />
 
     <app-header />
-    <div class="flex overflow-hidden bg-gray-100 dark:bg-gray-900 pt-16">
+    <div class="flex overflow-hidden bg-gray-100 dark:bg-gray-900 pt-24">
       <app-sidebar />
 
       <div class="h-full w-full bg-gray-100 relative overflow-y-auto lg:ml-24 p-6">

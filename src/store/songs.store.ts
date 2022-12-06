@@ -3,14 +3,15 @@ import { FetchError } from 'ohmyfetch'
 import { logger } from 'utils/logger'
 import type { SongResponse } from 'interfaces/song.interface'
 
-export const usePlayerStore = defineStore('player-store', {
+export const useSongsStore = defineStore('songs-store', {
   state: () => ({
-    currentPlaying: {} as SongResponse,
+    songDetails: {} as SongResponse,
   }),
   actions: {
-    async setCurrentSong(song: SongResponse) {
+    async fetchSongDetailsById(id: string) {
       try {
-        this.currentPlaying = song
+        const response = await this.$http.songs.detailsById(id)
+        this.songDetails = response?.data[0] || []
       } catch (error) {
         if (error instanceof FetchError) {
           logger.error(error.message)
@@ -18,5 +19,4 @@ export const usePlayerStore = defineStore('player-store', {
       }
     },
   },
-  getters: {},
 })

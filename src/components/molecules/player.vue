@@ -11,6 +11,7 @@ const audioSource = computed(
 
 <template>
   <nav
+    v-if="currentPlaying.id"
     class="fixed flex items-center justify-between border-t dark:border-gray-700 space-x-6 px-8 py-4 z-50 text-white bottom-0 bg-gray-50 dark:bg-gray-800 rounded-t-xl w-full"
   >
     <div class="flex space-x-4">
