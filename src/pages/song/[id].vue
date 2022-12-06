@@ -16,9 +16,25 @@ onMounted(() => fetchSongDetailsById(id as string))
 
 <template>
   <section class="">
-    <div v-if="songDetails.id">
-      <img class="rounded-xl" :src="songDetails.image[2].link" alt="" />
-      <button @click="setCurrentSong(songDetails)">Play</button>
+    <div v-if="songDetails.id" class="flex space-x-6">
+      <img class="rounded-xl h-64 w-64" :src="songDetails.image[2].link" alt="" />
+      <div class="flex flex-col">
+        <p>
+          {{ songDetails.name }}
+          by
+          {{ songDetails.primaryArtists }}
+        </p>
+
+        <p>{{ songDetails.duration }}</p>
+        <p>{{ songDetails.playCount }}</p>
+        <p>{{ songDetails.copyright }}</p>
+        <button
+          class="bg-red-500 rounded-full text-gray-50 w-fit py-2 px-6"
+          @click="setCurrentSong(songDetails)"
+        >
+          Play
+        </button>
+      </div>
     </div>
     <div v-else>Song Not Found :(</div>
   </section>

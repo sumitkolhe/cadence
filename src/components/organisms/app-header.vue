@@ -19,7 +19,7 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
 
 <template>
   <header
-    class="bg-gray-100 dark:bg-gray-900 h-24 px-10 fixed z-30 w-full flex items-center justify-between space-x-10"
+    class="bg-gray-100 dark:bg-gray-900 h-24 px-8 fixed z-30 w-full flex items-center justify-between space-x-10"
   >
     <Logo />
     <div

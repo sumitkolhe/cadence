@@ -12,7 +12,9 @@ import Player from 'components/molecules/player.vue'
     <div class="flex overflow-hidden bg-gray-100 dark:bg-gray-900 pt-24">
       <app-sidebar />
 
-      <div class="h-full w-full bg-gray-100 relative overflow-y-auto lg:ml-24 p-6">
+      <div
+        class="h-full w-full dark:bg-gray-900 text-gray-800 dark:text-gray-200 bg-gray-100 relative overflow-y-auto lg:ml-24 p-6"
+      >
         <slot />
       </div>
     </div>
