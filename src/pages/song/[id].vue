@@ -16,10 +16,10 @@ onMounted(() => fetchSongDetailsById(id as string))
 
 <template>
   <section class="">
-    <div v-if="songDetails.id" class="flex space-x-6">
-      <img class="rounded-xl h-64 w-64" :src="songDetails.image[2].link" alt="" />
-      <div class="flex flex-col">
-        <p>
+    <div v-if="songDetails.id" class="flex flex-col items-center md:flex-row md:space-x-6">
+      <img class="rounded-xl h-44 w-44 md:h-64 md:w-64" :src="songDetails.image[2].link" alt="" />
+      <div class="flex flex-col items-center text-center space-y-2">
+        <p class="text-center text-lg py-4">
           {{ songDetails.name }}
           by
           {{ songDetails.primaryArtists }}
@@ -36,6 +36,6 @@ onMounted(() => fetchSongDetailsById(id as string))
         </button>
       </div>
     </div>
-    <div v-else>Song Not Found :(</div>
+    <div v-else>loading...</div>
   </section>
 </template>

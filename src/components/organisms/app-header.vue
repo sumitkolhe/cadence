@@ -19,9 +19,11 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
 
 <template>
   <header
-    class="bg-gray-100 dark:bg-gray-900 h-24 px-8 fixed z-30 w-full flex items-center justify-between space-x-10"
+    class="bg-gray-100 dark:bg-gray-900 h-16 md:h-24 px-6 md:px-8 fixed z-30 w-full flex items-center justify-between space-x-10"
   >
-    <Logo />
+    <nuxt-link to="/">
+      <Logo />
+    </nuxt-link>
     <div
       ref="target"
       class="hidden relative w-[50%] lg:block ml-16 dark:border-gray-700 border-[2px] rounded-full"
@@ -54,9 +56,9 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
       >
         <div
           v-show="expand"
-          class="absolute bg-gray-100 border w-full flex flex-row rounded-xl top-14 shadow-2xl p-6 transition"
+          class="absolute dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 bg-gray-100 border w-full flex flex-row rounded-xl top-14 shadow-2xl p-6 transition"
         >
-          <div v-if="!searchResults.topQuery">Search for anything...</div>
+          <div v-if="!searchResults.topQuery" class="w-full">Search for anything...</div>
           <div v-else class="grid grid-cols-4 gap-4 w-full">
             <div class="flex flex-col space-y-2">
               <p>Top Results</p>

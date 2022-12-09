@@ -32,9 +32,9 @@ export default defineNuxtConfig({
     },
   },
 
-  srcDir: 'src',
+  css: ['~/assets/toast.css', 'bottom-navigation-vue/dist/style.css'],
 
-  css: ['~/assets/toast.css'],
+  srcDir: 'src',
 
   modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@vueuse/nuxt', 'nuxt-icon'],
 

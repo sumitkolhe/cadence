@@ -63,7 +63,7 @@ const seek = (event: Event) => {
 <template>
   <nav
     v-if="currentPlaying.id"
-    class="fixed backdrop-blur-md bg-opacity-5 grid grid-cols-3 items-center justify-between border-t dark:border-gray-700 px-6 py-4 z-50 bottom-0 bg-gray-50 dark:bg-gray-600 dark:bg-opacity-25 w-full"
+    class="fixed backdrop-blur-md h-20 bg-opacity-5 grid grid-cols-2 md:grid-cols-3 items-center justify-between border-t dark:border-gray-700 px-4 md:px-6 py-4 z-50 bottom-16 lg:bottom-0 bg-gray-50 dark:bg-gray-600 dark:bg-opacity-25 w-full"
   >
     <input
       class="bg-gray-600 absolute top-0 w-full h-1 appearance-none"
@@ -71,7 +71,7 @@ const seek = (event: Event) => {
       :value="progress"
       min="0"
       :max="player?.duration"
-      step="1"
+      step=".1"
       @input="seek"
     />
 
@@ -81,16 +81,18 @@ const seek = (event: Event) => {
         class="rounded-md dark:border-gray-700 border h-12"
       />
       <div class="flex flex-col">
-        <p class="text-gray-900 dark:text-gray-200 font-medium text-base">
+        <p class="text-gray-900 dark:text-gray-200 font-medium text-base truncate w-[10ch]">
           {{ currentPlaying.name }}
         </p>
-        <p class="text-gray-600 dark:text-gray-400 text-sm font-light">
+        <p class="text-gray-600 dark:text-gray-400 text-sm font-light truncate w-[10ch]">
           {{ currentPlaying.primaryArtists }}
         </p>
       </div>
     </div>
 
-    <div class="flex space-x-4 items-center justify-center w-full text-gray-700 dark:text-gray-50">
+    <div
+      class="flex space-x-2 md:space-x-4 items-center justify-end md:justify-center w-full text-gray-700 dark:text-gray-50"
+    >
       <button class="hover:text-gray-500 dark:hover:text-gray-300">
         <Icon name="ic:round-skip-previous" size="44" />
       </button>
@@ -113,7 +115,7 @@ const seek = (event: Event) => {
       </button>
     </div>
 
-    <div class="w-full justify-end flex items-center">
+    <div class="w-full justify-end hidden items-center md:flex">
       <Menu as="div" class="relative inline-block">
         <MenuButton>
           <Icon name="ph:dots-three-vertical-bold" size="28" />
