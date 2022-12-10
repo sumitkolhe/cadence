@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ['~/assets/toast.css', 'bottom-navigation-vue/dist/style.css'],
+  css: ['~/assets/toast.css'],
 
   srcDir: 'src',
 
