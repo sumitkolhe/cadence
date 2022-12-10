@@ -1,30 +1,22 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
-import { usePlayerStore } from 'store/player.store'
+import { SongQuality, usePlayerStore } from 'store/player.store'
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 
-// constant
-const SongQuality = {
-  extreme: '320kbps',
-  best: '160kbps',
-  good: '96kbps',
-  fair: '48kbps',
-  low: '12kbps',
-}
-
 // store
-const { currentPlaying } = storeToRefs(usePlayerStore())
+const { setCurrentQuality } = usePlayerStore()
+const { currentPlaying, currentQuality } = storeToRefs(usePlayerStore())
 
 // refs
 const player = ref<HTMLAudioElement>()
 const playing = ref(false)
 const progress = ref('0')
-const quality = ref<string>(SongQuality.extreme)
 
 // computed
 const audioSource = computed(
   () =>
-    currentPlaying.value?.downloadUrl?.find((link) => link.quality === quality.value)?.link || ''
+    currentPlaying.value?.downloadUrl?.find((link) => link.quality === currentQuality.value)
+      ?.link || ''
 )
 
 // watchers
@@ -57,6 +49,10 @@ const seek = (event: Event) => {
     if (!playing.value) playing.value = true
     player.value.currentTime = Number((event.target as HTMLInputElement).value) || 0
   }
+}
+
+const setQuality = (quality: string) => {
+  setCurrentQuality(quality)
 }
 </script>
 
@@ -141,8 +137,9 @@ const seek = (event: Event) => {
               <div class="py-2">
                 <MenuItem v-for="(q, index) in SongQuality" :key="index">
                   <button
+                    :class="[currentQuality === q ? 'bg-gray-200 dark:bg-gray-800' : '']"
                     class="block py-2.5 hover:bg-gray-200 dark:hover:bg-gray-600 tracking-wide text-sm w-full text-left px-4"
-                    @click="quality = q"
+                    @click="setQuality(q)"
                   >
                     {{ q }}
                   </button>

@@ -36,7 +36,13 @@ export default defineNuxtConfig({
 
   srcDir: 'src',
 
-  modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss', '@vueuse/nuxt', 'nuxt-icon'],
+  modules: [
+    '@pinia/nuxt',
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
+    'nuxt-icon',
+    '@pinia-plugin-persistedstate/nuxt',
+  ],
 
   build: {
     transpile: ['@headlessui/vue'],
