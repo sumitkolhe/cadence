@@ -18,7 +18,7 @@ onMounted(() => fetchAlbumDetailsById(id as string))
   <section class="">
     <div
       v-if="albumDetails.id"
-      class="flex w-full justify-center items-start flex-col md:flex-row md:space-x-8 md:px-24"
+      class="flex w-full justify-center items-start flex-col md:flex-row md:space-x-8 md:px-24 pb-20 md:pb-0"
     >
       <div class="w-full md:w-1/3 items-start justify-center flex flex-col">
         <img
