@@ -66,7 +66,7 @@ const seek = (event: Event) => {
     class="fixed backdrop-blur-md h-20 bg-opacity-5 grid grid-cols-2 md:grid-cols-3 items-center justify-between border-t dark:border-gray-700 px-4 md:px-6 py-4 z-50 bottom-16 lg:bottom-0 bg-gray-50 dark:bg-gray-600 dark:bg-opacity-25 w-full"
   >
     <input
-      class="bg-gray-600 absolute top-0 w-full h-1 appearance-none"
+      class="absolute top-0 w-full h-1 appearance-none"
       type="range"
       :value="progress"
       min="0"
