@@ -81,10 +81,14 @@ const seek = (event: Event) => {
         class="rounded-md dark:border-gray-700 border h-12"
       />
       <div class="flex flex-col">
-        <p class="text-gray-900 dark:text-gray-200 font-medium text-base truncate w-[10ch]">
+        <p
+          class="text-gray-900 dark:text-gray-200 font-medium text-base truncate w-[10ch] md:w-[30ch]"
+        >
           {{ currentPlaying.name }}
         </p>
-        <p class="text-gray-600 dark:text-gray-400 text-sm font-light truncate w-[10ch]">
+        <p
+          class="text-gray-600 dark:text-gray-400 text-sm font-light truncate w-[10ch] md:w-[30ch]"
+        >
           {{ currentPlaying.primaryArtists }}
         </p>
       </div>
@@ -118,7 +122,7 @@ const seek = (event: Event) => {
     <div class="w-full justify-end hidden items-center md:flex">
       <Menu as="div" class="relative inline-block">
         <MenuButton>
-          <Icon name="ph:dots-three-vertical-bold" size="28" />
+          <Icon name="ph:dots-three-vertical-bold" size="28" class="dark:text-gray-100" />
         </MenuButton>
 
         <transition
@@ -130,14 +134,14 @@ const seek = (event: Event) => {
           leave-to-class="transform scale-95 opacity-0"
         >
           <MenuItems
-            class="absolute -top-[280px] right-2 w-44 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg"
+            class="absolute -top-[280px] right-2 w-44 origin-top-right rounded-md bg-gray-50 dark:bg-gray-700 dark:text-gray-200 shadow-lg"
           >
             <div>
-              <p class="border-b p-3 font-medium">Quality</p>
+              <p class="border-b dark:border-gray-500 p-3 font-medium">Quality</p>
               <div class="py-2">
                 <MenuItem v-for="(q, index) in SongQuality" :key="index">
                   <button
-                    class="block py-2.5 hover:bg-gray-200 tracking-wide text-sm w-full text-left px-4"
+                    class="block py-2.5 hover:bg-gray-200 dark:hover:bg-gray-600 tracking-wide text-sm w-full text-left px-4"
                     @click="quality = q"
                   >
                     {{ q }}

@@ -38,8 +38,8 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
     </div>
 
     <div v-if="searchResults.topQuery" class="grid gridrow-4 gap-6 w-full mt-6">
-      <div>
-        <p class="font-medium my-2">Top Results</p>
+      <div v-if="searchResults.topQuery.results.length > 0">
+        <p class="font-medium my-2 text-gray-600 dark:text-gray-200">Top Results</p>
         <div class="flex flex-row space-x-4 overflow-x-scroll no-scrollbar">
           <img
             v-for="(item, index) in searchResults?.topQuery?.results"
@@ -50,8 +50,8 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
         </div>
       </div>
 
-      <div>
-        <p class="font-medium my-2">Songs</p>
+      <div v-if="searchResults.songs.results.length > 0">
+        <p class="font-medium my-2 text-gray-600 dark:text-gray-200">Songs</p>
         <div class="flex flex-row space-x-4 overflow-x-scroll no-scrollbar">
           <img
             v-for="(item, index) in searchResults?.songs?.results"
@@ -63,20 +63,21 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
         </div>
       </div>
 
-      <div>
-        <p class="font-medium my-2">Albums</p>
+      <div v-if="searchResults.albums.results.length > 0">
+        <p class="font-medium my-2 text-gray-600 dark:text-gray-200">Albums</p>
         <div class="flex flex-row space-x-4 overflow-x-scroll no-scrollbar">
           <img
             v-for="(item, index) in searchResults?.albums?.results"
             :key="index"
             :src="item.image[2].link"
             class="h-32 rounded-md w-32"
+            @click="$router.push(`/album/${item.id}`)"
           />
         </div>
       </div>
 
-      <div>
-        <p class="font-medium my-2">Artists</p>
+      <div v-if="searchResults.artists.results.length > 0">
+        <p class="font-medium my-2 text-gray-600 dark:text-gray-200">Artists</p>
         <div class="flex flex-row space-x-4 overflow-x-scroll no-scrollbar">
           <img
             v-for="(item, index) in searchResults?.artists?.results"

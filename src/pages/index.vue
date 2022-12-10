@@ -15,20 +15,22 @@ onMounted(() => fetchModules())
     <div class="flex overflow-x-scroll py-6 no-scrollbar">
       <div v-if="modules?.albums" class="flex flex-nowrap mr-28">
         <div v-for="(i, idx) in modules.albums" :key="idx" class="inline-block px-3">
-          <div
-            class="h-44 w-44 relative group overflow-hidden rounded-xl bg-white duration-300 ease-in-out"
-          >
-            <img :src="i.image[2].link" class="rounded-xl object-fill" />
+          <nuxt-link :to="`/album/${i.id}`">
             <div
-              class="opacity-0 group-hover:opacity-75 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl bg-gray-900"
+              class="h-44 w-44 relative group overflow-hidden rounded-xl bg-white duration-300 ease-in-out"
             >
-              <button
-                class="text-gray-50 rounded-full flex items-center justify-center bg-red-500 opacity-100 h-10 w-10"
+              <img :src="i.image[2].link" class="rounded-xl object-fill" />
+              <div
+                class="opacity-0 group-hover:opacity-75 duration-300 absolute inset-0 z-10 flex justify-center items-center text-xl bg-gray-900"
               >
-                <Icon name="ph:play-fill" />
-              </button>
+                <button
+                  class="text-gray-50 rounded-full flex items-center justify-center bg-red-500 opacity-100 h-10 w-10"
+                >
+                  <Icon name="ph:play-fill" />
+                </button>
+              </div>
             </div>
-          </div>
+          </nuxt-link>
         </div>
       </div>
     </div>

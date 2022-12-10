@@ -83,12 +83,13 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
 
             <div class="flex flex-col space-y-2">
               <p>Albums</p>
-              <img
+              <nuxt-link
                 v-for="(item, index) in searchResults?.albums?.results"
                 :key="index"
-                :src="item.image[0].link"
-                class="h-12 rounded-md w-12"
-              />
+                :to="`/album/${item.id}`"
+              >
+                <img :src="item.image[0].link" class="h-12 rounded-md w-12" />
+              </nuxt-link>
             </div>
 
             <div class="flex flex-col space-y-2">

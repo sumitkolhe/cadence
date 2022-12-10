@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Swipe from 'components/molecules/swipe.vue'
+const { isDarkTheme } = useTheme()
 const selectedTab = ref(0)
 const options = [
   { id: 1, title: 'Home', path: '/', icon: 'material-symbols:home-rounded' },
@@ -9,17 +11,12 @@ const options = [
 </script>
 
 <template>
-  <section class="fixed lg:hidden bottom-0 h-16 bg-red-500 w-full">
-    <SwipeBottomNavigation
-      v-model="selectedTab"
-      swiper-color="#f55"
-      background-color="#FFFFFF"
-      icon-color="#f55"
-      :options="options"
-    >
+  <section class="fixed lg:hidden bottom-0 h-16 w-full">
+    <swipe v-model="selectedTab" :options="options">
+      {{ isDarkTheme }}
       <template #icon="{ props }">
-        <Icon :name="props.icon" size="24" class="" />
+        <Icon :name="props.icon!" size="24" class="" />
       </template>
-    </SwipeBottomNavigation>
+    </swipe>
   </section>
 </template>
