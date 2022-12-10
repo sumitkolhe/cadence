@@ -14,7 +14,7 @@ onMounted(() => fetchModules())
 
     <div class="flex overflow-x-scroll py-6 no-scrollbar">
       <div v-if="modules?.albums" class="flex flex-nowrap mr-28">
-        <div v-for="(i, idx) in modules.albums" :key="idx" class="inline-block px-3">
+        <div v-for="(i, idx) in modules.trending.albums" :key="idx" class="inline-block px-3">
           <nuxt-link :to="`/album/${i.id}`">
             <div
               class="h-44 w-44 relative group overflow-hidden rounded-xl bg-white duration-300 ease-in-out"
