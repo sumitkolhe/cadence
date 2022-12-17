@@ -4,8 +4,13 @@ import { logger } from 'utils/logger'
 import type { AllSearchResponse } from 'interfaces/search.interface'
 import type { SongSearchResponse } from 'interfaces/song.interface'
 
+interface State {
+  searchResults: AllSearchResponse
+  searchedSongs: SongSearchResponse
+}
+
 export const useSearchStore = defineStore('search-store', {
-  state: () => ({
+  state: (): State => ({
     searchResults: {} as AllSearchResponse,
     searchedSongs: {} as SongSearchResponse,
   }),

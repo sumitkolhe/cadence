@@ -14,10 +14,11 @@ export const usePlayerStore = defineStore('player-store', {
   state: () => ({
     currentPlaying: {} as SongResponse | null,
     currentQuality: SongQuality.extreme,
+    isMobilePlayerOpen: false,
   }),
 
   actions: {
-    async setCurrentSong(song: SongResponse) {
+    setCurrentSong(song: SongResponse) {
       try {
         this.currentPlaying = null
         this.currentPlaying = song

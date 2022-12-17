@@ -173,7 +173,7 @@ if (index > -1) {
 
 <template>
   <div
-    class="fixed flex items-end bottom-0 border-t border-gray-50 border-opacity-30 left-0 w-full z-[9999999] h-[64px] bg-gray-50 dark:bg-gray-800 backdrop-blur-md bg-opacity-5"
+    class="fixed flex items-end bottom-0 left-0 w-full z-[9999999] h-[64px] bg-gray-50 dark:bg-gray-800 backdrop-blur-md bg-opacity-5"
   >
     <div
       v-for="(button, index) in localOptions"

@@ -1,7 +1,9 @@
 <script lang="ts" setup>
 import { useSearchStore } from 'store/search.store'
 import { storeToRefs } from 'pinia'
+import type { AllSearchResponse } from '~~/src/interfaces/search.interface'
 
+const router = useRouter()
 const { searchAll } = useSearchStore()
 const { searchResults } = storeToRefs(useSearchStore())
 
@@ -13,11 +15,19 @@ const query = refDebounced(search, 500)
 onClickOutside(target, () => (expand.value = false))
 
 watch(query, () => (query.value === '' ? null : searchAll(query.value)))
+
+const routeTopQueryResult = (item: AllSearchResponse['topQuery']) => {
+  const result = item.results[0]
+
+  if (result.type === 'song') router.push(`/song/${result.id}`)
+  else if (result.type === 'album') router.push(`/album/${result.id}`)
+  else if (result.type === 'artist') router.push(`/artist/${result.id}`)
+}
 </script>
 
 <template>
   <section>
-    <div class="dark:border-gray-700 border-2 rounded-full -mt-3">
+    <div class="dark:border-gray-700 border-2 rounded-full -mt-3 lg:hidden">
       <label for="search-field" class="sr-only">Search everything</label>
       <div
         class="relative w-full text-gray-300 focus-within:text-gray-600 dark:focus-within:text-gray-300"
@@ -46,6 +56,7 @@ watch(query, () => (query.value === '' ? null : searchAll(query.value)))
             :key="index"
             :src="item.image[2].link"
             class="h-32 rounded-md w-32"
+            @click="routeTopQueryResult(item as unknown as AllSearchResponse['topQuery'])"
           />
         </div>
       </div>
