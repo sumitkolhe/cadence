@@ -1,5 +1,5 @@
-import { $fetch } from 'ohmyfetch'
-import type { $Fetch } from 'ohmyfetch'
+import { $fetch } from 'ofetch'
+import type { $Fetch } from 'ofetch'
 
 export class ApiService {
   private baseUrl = 'https://api.saavn.me/'

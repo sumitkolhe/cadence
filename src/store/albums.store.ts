@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { FetchError } from 'ohmyfetch'
+import { FetchError } from 'ofetch'
 import { logger } from 'utils/logger'
 import type { AlbumResponse } from 'interfaces/album.interface'
 
