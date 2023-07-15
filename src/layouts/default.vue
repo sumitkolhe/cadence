@@ -6,8 +6,8 @@ import Navigation from 'components/molecules/navigation.vue'
 </script>
 
 <template>
-  <main class="no-select">
-    <NuxtLoadingIndicator color="#f55" :height="3" />
+  <main>
+    <nuxt-loading-indicator color="#f55" :height="3" />
 
     <app-header />
     <div class="flex overflow-hidden bg-gray-100 dark:bg-gray-900 pt-16 md:pt-24">

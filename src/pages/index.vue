@@ -10,8 +10,6 @@ onMounted(() => fetchModules())
 
 <template>
   <section class="text-gray-400 space-y-6 md:space-y-8">
-    <!-- <p class="text-base uppercase tracking-wider px-4">Trending</p> -->
-
     <div class="flex overflow-x-scroll no-scrollbar">
       <div v-if="modules?.albums" class="flex flex-nowrap mr-28">
         <div v-for="(i, idx) in modules.trending.albums" :key="idx" class="inline-block px-3">
